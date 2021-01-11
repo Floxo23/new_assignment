@@ -1,0 +1,164 @@
+1.1 
+I can see the folders in the working directory (the location in which it the computer is looking). 
+
+1.2 
+ls - @
+
+1.3
+
+ls -@ -S 
+
+2.1
+
+Pwd = print working directory 
+Currently main user (florian.kleinau)
+Cd = change directory
+
+2.2
+For me, the cd .. didn’t work, shows an error 
+
+To set new wd:
+cd /Users/floriankleinau/shell_magic 
+
+3.1
+
+I just intuitively named the file hello_world … no spaces in file names 
+
+3.2
+mkdir = make directory (??)cs 
+
+I used mkdir hello_world
+
+3.3 
+Because it already exists 
+I used mv hello_world_bfe hello_world_txt 
+I used mv hello_world.txt /Users/floriankleinau/shell_magic/hello_world/          
+Cd /Users/floriankleinau/shell_magic/hello_world and then just Cd /Users/floriankleinau/shell_magic
+
+3.4
+
+Copying a file multiplies it (there are now 2), moving simply moves it (there is only 1)
+
+cp /Users/floriankleinau/shell_magic/hello_world/hello_world.txt  /Users/floriankleinau/shell_magic
+
+3.5
+
+Rm = remove 
+rm hello_world.txt
+
+Well its a directory / a file 
+rm -d  -R
+
+4.1
+
+cat = concatenate and print files
+I see nothing because its empty 
+
+4.2
+
+echo ’file contents’ > file_text.txt
+echo ’more contents’ >> file_text.txt 
+
+4.3
+
+When the file is longer than a few dozen rows cause otherwise it’ll appear strange in the terminal than using cat. 
+
+touch home_contents.list 
+\Users\floriankleinau >  home_contents.list 
+5.1
+
+Wc = word, line, character, and byte count
+
+I mean, I see 0 0 0 but I believe this is wrong they mean that there are 0 words, 0 lines and 0 characters in the file
+
+cat home_contents.list | wc
+
+Actually, I tried this for the helloworld.txt we are supposed to do below and it gave me sensible output 
+
+Under the hood the pipe operator inputs the overview directly into the counting function while without the pipe, the counting function uses the original file to do its job. 
+
+5.2 
+
+touch helloworld.txt | echo 'hello world' > helloworld.txt | echo 'world hello' >> helloworld.txt
+
+Last output:
+
+hello world
+world hello
+world hello
+
+Command: cat helloworld.txt worldhello.txt | grep hello
+
+5.3
+
+cat helloworld.txt| grep hello| wc
+
+Output 
+
+       2       4      24
+
+
+cat helloworld.txt| grep hello| wc | less
+
+6.2
+
+Tar -xf aup.tar
+
+6.3
+
+find aup
+
+aup/cohort3/s241f/spare-second-version-r2/s241f2.aup
+
+There is some weird stuff in there… I am pasting what I found (less aup/cohort3/s241f/spare-second-version-r2/s241f2.aup):
+
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="s241f2_data" version="1.3.0" audacityversion="1.3.12-beta" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="1233.3627210884" zoom="86.1328125000" rate="44100">
+        <tags>
+                <tag name="id3v2" value="1"/>
+        </tags>
+        <wavetrack name="Audio Track" channel="2" linked="0" mute="0" solo="0" height="150" minimized="1" rate="44100" gain="1" pan="0">
+                <waveclip offset="0.00000000">
+                        <sequence maxsamples="262144" sampleformat="262159" numsamples="54908928">
+                                <waveblock start="0">
+                                        <simpleblockfile filename="e0000ea3.au" len="262144" min="-0.217526" max="0.263548" rms="0.024749"/>
+                                </waveblock>
+                                <waveblock start="262144">
+                                        <simpleblockfile filename="e000096a.au" len="262144" min="-0.300871" max="0.373825" rms="0.020688"/>
+                                </waveblock>
+                                <waveblock start="524288">
+                                        <simpleblockfile filename="e00002ad.au" len="262144" min="-
+
+
+So now the n/o .aup files 
+
+
+ls -R | grep .aup | wc
+
+output
+    1381    1381   21589
+
+6.4
+
+cat wikipedia | grep -E 1995 | wc
+
+cat wikipedia  | grep -E  1980-1999 | wc
+
+cat wikipedia  | grep -E 19.0 ^1940 ^1950 | wc
+
+cat wikipedia  | grep -iE norwegian | wc
+
+cat wikipedia  | grep -E  19.6 | wc
+
+cat wikipedia  | grep -E  190+. | wc
+
+
+cat wikipedia | grep -iE  [1* November]
+Unwanted stuff: it gave me this error message: curl: (23) Failed writing body (0 != 16374) hmm .. not sure what to do with it 
+
+cat wikipedia | grep - iE  http\.  | wc
+
+
+
+
